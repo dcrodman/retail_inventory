@@ -1,0 +1,34 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href='{% static "base.css" %}'>
+<title>Dashboard</title>
+</head>
+
+<body>
+	<center>
+		<div id="main_div">
+			<h3>Dashboard</h3>
+			<div class="sub_div">
+				<h5>Stock Management</h5>
+				<ul>
+					<li><a href="/overview">Overview</a></li>
+					<li><a href="/product_search">Product Lookup</a></li>
+					<li><a href="/transactions">Transactions</a></li>
+				</ul>
+			</div>
+			<div class="sub_div">
+				<h5>Employee Management</h5>
+				<ul>
+					<li><a href="/employee_add">Add Employee</a></li>
+					<li><a href="/sales_overview">Sales Overview</a></li>
+					<li><a href="/employee_search">Employee Lookup</a></li>
+				</ul>
+			</div>
+		</div>
+	</center>
+</body>
+
+</html>
