@@ -1,0 +1,31 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<!-- Bootstrap -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href='{% static "css/base.css" %}'>
+<title>
+	{% if title %}
+		{{ title }}
+	{% else %}
+		Insert Title
+	{% endif %}
+</title>
+
+{% block extra_header %}
+{% endblock %}
+</head>
+
+<body>
+{% block body %}
+{% endblock %}
+</body>
+
+</html>
+
