@@ -6,3 +6,7 @@ Requirements:
 
 To run:
 	With the above installed, run "python manage.py runserver" from the project's base directory.
+
+Things I'd like to do:
+	Store session information per User (settings, accounts, etc) so that they can change stores and see different results
+	
