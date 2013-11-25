@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
-{% block title %}Product Search{% endblock %}
-
 {% block extra_header %}
 <style>
 #main_div { width: 600px; }
+form {
+	width: 300px;
+}
 </style>
 {% endblock %}
 
@@ -13,7 +14,16 @@
 <center>
 	<div id="main_div">
 		<h3>Product Search</h3>
-		<p>Not Implemented</p>
+
+		<form role="form" method="post" action="">
+			{% csrf_token %}
+			{% for field in fields %}
+				<div class="form-group">
+					<input class="form-control" type="text" name="{{ field }}" placeholder="{{ field }}">
+				</div>
+			{% endfor %}
+			<button type="submit" class="btn btn-primary">Search</button>
+		</form>
 	</div>
 </center>
 {% endblock %}
