@@ -3,26 +3,19 @@ from django.views.generic.base import View
 
 from db_helper import InventoryDBHelper
 from RetailInventory import url_names
+from overview_handler import TableOverview
 from search_handler import SearchView
 
-class StockOverviewView(View):
+class StockOverviewView(TableOverview):
   """Class to represent the stock overview page, which presents the option
   of viewing all stock in the store's inventory."""
 
-  def get(self, request):
-    helper = InventoryDBHelper()
-    headers = helper.getColumnsForTable('products')
+  def getPageTitle(self):
+    return 'Stock Overview'
 
-    helper.execute('select * from products')
-    products = [product for product in helper]
-    helper.close()
+  def getTableName(self):
+    return 'products'
 
-    context = {
-        'title' : 'Stock Overview',
-        'headers' : headers, 
-        'products' : products
-        }
-    return render(request, 'stock/stock_overview.html', context)
 
 class ProductSearchView(SearchView):
 
@@ -34,3 +27,24 @@ class ProductSearchView(SearchView):
 
   def getPageTitle(self):
     return 'Product Search'
+
+
+class CustomerSearchView(SearchView):
+
+  def getViewURL(self):
+    return url_names.customer_search_url()
+
+  def getTableName(self):
+    return 'customers'
+
+  def getPageTitle(self):
+    return 'Customer Search'
+
+
+class ServiceProductsView(TableOverview):
+
+  def getPageTitle(self):
+    return 'Servie Products'
+
+  def getTableName(self):
+    return 'serviced_products'
