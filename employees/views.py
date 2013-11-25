@@ -4,6 +4,7 @@ from django.views.generic.base import View
 
 from RetailInventory import url_names
 from db_helper import InventoryDBHelper
+from overview_handler import TableOverview
 from search_handler import SearchView
 
 class AddEmployeeView(View):
@@ -58,22 +59,14 @@ class AddEmployeeView(View):
     return HttpResponseRedirect(url)
 
 
-class EmployeeDetailsView(View):
+class EmployeeDetailsView(TableOverview):
   """View responsible for displaying employee details."""
   
-  def get(self, request):
-    helper = InventoryDBHelper()
-    headers = helper.getColumnsForTable('employeedetails')
-    helper.execute('select * from employeedetails')
-    employees = [employee for employee in helper]
-    helper.close()
+  def getPageTitle(self):
+    return 'Employee Overview'
 
-    context = {
-        'title' : 'Employee Details',
-        'headers' : headers,
-        'employees' : employees,
-        }
-    return render(request, 'employees/employee_details.html', context)
+  def getTableName(self):
+    return 'employeedetails'
 
 
 class SearchEmployeeView(SearchView):

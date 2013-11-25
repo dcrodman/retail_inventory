@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.views.generic import RedirectView
 
 from RetailInventory import url_names
-import views
+from employees import views
 
 urlpatterns = patterns('',
     url(r'^$', RedirectView.as_view(url='search/')),
