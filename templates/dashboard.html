@@ -9,12 +9,12 @@ td { padding-right: 10px; }
 
 #main_div { 
 	width: 500px; 
-	height: 430px;
+	height: 400px;
 }
 
 .sub_div {
 	width:200px;
-	height: 100px;
+	height: 130px;
 	border-style: solid;
 	border-width: 1px;
 	border-radius: 15px;
@@ -22,6 +22,7 @@ td { padding-right: 10px; }
 	display: inline-block;
 	text-align: left;
 	padding: 7px;
+	margin-bottom: 20px;
 }
 
 </style>
@@ -39,6 +40,8 @@ td { padding-right: 10px; }
 						<ul>
 							<li><a href="{{ stock_overview }}">Overview</a></li>
 							<li><a href="{{ product_search }}">Product Lookup</a></li>
+							<li><a href="{{ customer_search }}">Customer Lookup</a></li>
+							<li><a href="{{ service_product_overview }}">Service Products</a></li>
 						</ul>
 					</div>
 					</td>
@@ -50,6 +53,8 @@ td { padding-right: 10px; }
 							<li><a href="{{ add_employee }}">Add Employee</a></li>
 							<li><a href="{{ employee_details }}">Employee Details</a></li>
 							<li><a href="{{ search_employees }}">Employee Lookup</a></li>
+							<li><a href=""><b>Add Contact Information</b></a></li>
+							<li><a href=""><b>Edit Contact Information</b></a></li>
 						</ul>
 					</div>
 					</td>
@@ -60,32 +65,9 @@ td { padding-right: 10px; }
 					<div class="sub_div">
 						<h5>Transactions</h5>
 						<ul>
-							<li><a href="/transactions">Transactions Overview</a></li>
-							<li><a href="/transactions/sales">Sales Overview</a></li>
-							<li><a href="/transactions/search">Look Up Receipt</a></li>
-						</ul>
-					</div>
-					</td>
-
-					<td>
-					<div class="sub_div">
-						<h5>Products and Customers</h5>
-						<ul>
-							<li><a href="/customers/search">Customer Lookup</a></li>
-							<li><a href="/customers/product_search">Find Products</a></li>
-							<li><a href="/customers/service_products">Service Products</a></li>
-						</ul>
-					</div>
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-					<div class="sub_div">
-						<h5>Scheduling</h5>
-						<ul>
-							<li><a href="/scheduling/add">Add Shift</a></li>
-							<li><a href="/scheduling/view">View Schedule</a></li>
+							<li><a href="{{ transaction_overview }}">Transactions Overview</a></li>
+							<li><a href="{{ sales_overview }}">Sales Overview</a></li>
+							<li><a href="{{ receipt_search }}">Look Up Receipt</a></li>
 						</ul>
 					</div>
 					</td>
@@ -95,6 +77,8 @@ td { padding-right: 10px; }
 						<h5>Manage Store</h5>
 						<ul>
 							<li><a href="/store/managers">Managers</a></li>
+							<li><a href="/scheduling/add"><b>Add Shift</b></a></li>
+							<li><a href="/scheduling/view"><b>View Schedule</b></a></li>
 						</ul>
 					</div>
 					</td>

@@ -11,8 +11,13 @@ class DashboardView(View):
         'title' : 'Dashboard',
         'stock_overview' : stock_overview_url(),
         'product_search' : product_search_url(),
+        'customer_search' : customer_search_url(),
+        'service_product_overview' : service_products_url(),
         'add_employee' : add_employee_url(),
         'employee_details' : employee_details_url(),
-        'search_employees' : search_employee_url()
+        'search_employees' : search_employee_url(),
+        'transaction_overview' : transaction_overview_url(),
+        'sales_overview' : sales_overview_url(),
+        'receipt_search' : receipt_search_url()
       }
     return render(request, 'dashboard.html', context)
