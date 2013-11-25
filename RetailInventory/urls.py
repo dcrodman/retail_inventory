@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from django.views.generic.simple import redirect_to
+from django.views.generic import RedirectView
 
 from dashboard import views
 from employees import urls as employee_urls
@@ -9,7 +9,7 @@ from transactions import urls as transaction_urls
 import url_names
 
 urlpatterns = patterns('',
-    url(r'^$', redirect_to, {'url' : '/dashboard'}),
+    url(r'^$', RedirectView.as_view(url='/dashboard')),
     url(r'^dashboard/$', views.DashboardView.as_view(), 
         name=url_names.DASHBOARD),
 
