@@ -18,6 +18,7 @@ class DashboardView(View):
         'search_employees' : search_employee_url(),
         'transaction_overview' : transaction_overview_url(),
         'sales_overview' : sales_overview_url(),
-        'receipt_search' : receipt_search_url()
+        'receipt_search' : receipt_search_url(),
+        'manager_overview' : manager_overview_url()
       }
     return render(request, 'dashboard.html', context)
