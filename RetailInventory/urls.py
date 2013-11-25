@@ -15,7 +15,7 @@ urlpatterns = patterns('',
 
     url(r'^stock/', include(stock_urls)),
     url(r'^employees/', include(employee_urls)),
-    #url(r'^transactions/', include(transaction_urls)),
+    url(r'^transactions/', include(transaction_urls)),
   
     #url(r'^customers/', include(stock_urls)),
     #url(r'^scheduling/', include(stock_urls)),
