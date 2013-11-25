@@ -19,18 +19,23 @@ class AddEmployeeView(View):
     helper.close()
     
     success = True if 'success' in request.GET else False
+    missing_name = True if 'form_error' in request.GET else False
 
     context = {
         'title' : 'Add Employee',
         'positions' : employee_positions,
         'managers' : managers,
-        'success' : success
+        'success' : success,
+        'missing_name' : missing_name
         }
     return render(request, 'employees/add_employee.html', context)
   
   def post(self, request):
     helper = InventoryDBHelper()
     
+    if 'name' not in request.POST or len(request.POST['name']) < 1:
+      url = url_names.add_employee_url() + '?form_error=true'
+      return HttpResponseRedirect(url)
     name = helper.escape_string(request.POST['name'])
     position = helper.escape_string(request.POST['position'])
     manager = helper.escape_string(request.POST['manager'])
@@ -42,7 +47,6 @@ class AddEmployeeView(View):
     manager_id = helper.first()[0]
     if not manager_id:
       return HttpResponse(status=412)
-    print manager_id
 
     helper.execute('insert into employees (name, position, manager) ' +
         'values ("%s", "%s", %d);' % (name, position, manager_id))

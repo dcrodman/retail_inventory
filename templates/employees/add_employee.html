@@ -32,8 +32,13 @@ p { margin-right: 100px;}
 		
 		<form role="form" method="post" action="">
 		 	{% csrf_token %}
-			<div class="form-group">
+			<div class="form-group" id="name_container">
 				<input class="form-control" type="text" name="name" placeholder="Employe Name">
+				{% if missing_name %}
+				<script>
+					$("#name_container").addClass("form-group has-error");
+				</script>
+				{% endif %}
 			</div>
 			<div class="form-group">
 				<select class="form-control" name="position">
