@@ -16,6 +16,8 @@ SEARCH_EMPLOYEE = 'search_employee'
 TRANSACTION_OVERVIEW = 'transaction_overview'
 SALES_OVERVIEW = 'sales_overview'
 RECEIPT_SEARCH = 'receipt_overview'
+# Store module URLS.
+MANAGER_OVERVIEW = 'manager_overview'
 
 
 # Shortcut URLS for resolving reverse matches.
@@ -52,3 +54,6 @@ def sales_overview_url():
 
 def receipt_search_url():
   return reverse(RECEIPT_SEARCH)
+
+def manager_overview_url():
+  return reverse(MANAGER_OVERVIEW)
