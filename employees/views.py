@@ -4,6 +4,7 @@ from django.views.generic.base import View
 
 from RetailInventory import url_names
 from db_helper import InventoryDBHelper
+from search_handler import SearchView
 
 class AddEmployeeView(View):
   """View responsible for allowing administrators to add new employees."""
@@ -75,13 +76,16 @@ class EmployeeDetailsView(View):
     return render(request, 'employees/employee_details.html', context)
 
 
-class SearchEmployeeView(View):
+class SearchEmployeeView(SearchView):
   """View responsible for allowing a user to search for an employee by 
   some detail (field name).
   """
   
-  def get(self, request):
-    context = {
-        'title' : 'Search Employees'
-        }
-    return render(request, 'employees/employee_search.html', context)
+  def getViewURL(self):
+    return url_names.search_employee_url()
+
+  def getTableName(self):
+    return 'employees'
+
+  def getPageTitle(self):
+    return "Search Employees"
