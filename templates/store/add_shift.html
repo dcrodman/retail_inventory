@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block extra_header %}
+<style>
+#main_div { width: 600px; }
+form {
+	margin-top: 30px;
+	width: 300px;
+	border-radius: 5px;
+	background-color: #e8e8e8;
+	padding: 20px;
+	position: inline-block;
+	clear: both;
+}
+.alert {
+	margin-top: 15px;
+	width: 60%;
+}
+
+button { width: 110px; }
+p { 
+	margin-top: -10px;
+	margin-right: 150px;
+}
+
+</style>
+{% endblock %}
+
+{% block body %}
+<center>
+	<div id="main_div">
+		<h3>{{ title }}</h3>
+		
+		<form role="form" method="post" action="">
+		 	{% csrf_token %}
+		 	<div class="form-group">
+				<select class="form-control" name="employee">
+					{% for employee in employees %}
+						<option>{{ employee }}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div class="form-group">
+				<select class="form-control" name="start_time">
+					{% for time in times %}
+						<option>{{ time }}</option>
+					{% endfor %}
+				</select>
+				<p class="help-block pull-left">Start Time</p>
+			</div>
+
+			<div class="form-group">
+				<select class="form-control" name="end_time">
+					{% for time in times %}
+						<option>{{ time }}</option>
+					{% endfor %}
+				</select>
+				<p class="help-block pull-left">End Time</p>
+			</div>
+
+			<div class="form-group">
+				<select class="form-control" name="date">
+					{% for date in dates %}
+						<option>{{ date }}</option>
+					{% endfor %}
+				</select>
+				<p class="help-block pull-left">Date</p>
+			</div>
+
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+
+		{% if success %}
+			<div class="alert alert-success"><b>Success!</b> Shift Added to the Database.</div>
+		{% elif missing %}
+			<script>
+				var missing_field = $("input[name='{{ missing }}']");
+				missing_field.parent().addClass("form-group has-error");
+			</script>
+		{% endif %}
+
+	</div>
+</center>
+{% endblock %}
