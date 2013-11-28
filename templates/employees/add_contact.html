@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block extra_header %}
+<style>
+#main_div { width: 600px; }
+form {
+	margin-top: 30px;
+	width: 300px;
+	border-radius: 5px;
+	background-color: #e8e8e8;
+	padding: 20px;
+	position: inline-block;
+	clear: both;
+}
+
+.alert {
+	margin-top: 15px;
+	width: 60%;
+}
+
+button { width: 110px; }
+p { margin-right: 100px;}
+
+</style>
+{% endblock %}
+
+{% block body %}
+<center>
+	<div id="main_div">
+		<h3>{{ title }}</h3>
+		
+		<form role="form" method="post" action="">
+		 	{% csrf_token %}
+		 	{% for field in fields %}
+				<div class="form-group" id="name_container">
+					<input class="form-control" type="text" name="{{ field }}" placeholder="{{ field }}">
+				</div>
+			{% endfor %}
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+
+		{% if success %}
+			<div class="alert alert-success"><b>Success!</b> Contact Added to the Database.</div>
+		{% elif missing %}
+			<script>
+				var missing_field = $("input[name='{{ missing }}']");
+				missing_field.parent().addClass("form-group has-error");
+			</script>
+		{% elif db_error %}
+			<div class="alert alert-danger"><b>SQL Error!</b> {{ db_error }}</div>
+		{% endif %}
+
+	</div>
+</center>
+{% endblock %}

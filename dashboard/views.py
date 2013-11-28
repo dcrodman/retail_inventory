@@ -16,6 +16,7 @@ class DashboardView(View):
         'add_employee' : add_employee_url(),
         'employee_details' : employee_details_url(),
         'search_employees' : search_employee_url(),
+        'add_contact' : add_contact_url(),
         'transaction_overview' : transaction_overview_url(),
         'sales_overview' : sales_overview_url(),
         'receipt_search' : receipt_search_url(),

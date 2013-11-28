@@ -12,6 +12,7 @@ SERVICE_PRODUCTS = 'service_products'
 ADD_EMPLOYEE = 'add_employee'
 EMPLOYEE_DETAILS = 'employee_details'
 SEARCH_EMPLOYEE = 'search_employee'
+ADD_CONTACT = 'add_contact'
 # Transaction Module URLs
 TRANSACTION_OVERVIEW = 'transaction_overview'
 SALES_OVERVIEW = 'sales_overview'
@@ -45,6 +46,9 @@ def employee_details_url():
 
 def search_employee_url():
   return reverse(SEARCH_EMPLOYEE)
+
+def add_contact_url():
+  return reverse(ADD_CONTACT)
 
 def transaction_overview_url():
   return reverse(TRANSACTION_OVERVIEW)

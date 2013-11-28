@@ -12,4 +12,6 @@ urlpatterns = patterns('',
         name=url_names.EMPLOYEE_DETAILS),
     url(r'^search/$', views.SearchEmployeeView.as_view(),
         name=url_names.SEARCH_EMPLOYEE),
+    url(r'^add_contact/$', views.AddContactView.as_view(),
+        name=url_names.ADD_CONTACT)
 )
