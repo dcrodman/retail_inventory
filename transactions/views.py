@@ -41,7 +41,8 @@ class POSView(View):
   def get(self, request):
     helper = InventoryDBHelper()
 
-    helper.execute('select name from products')
+    # Only allow users to ring out items available for sale.
+    helper.execute('select name from products where bucket = "sellable"')
     products = [product[0] for product in helper]
 
     helper.execute('select name from employees')
