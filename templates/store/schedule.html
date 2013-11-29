@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block extra_header %}
+<style>
+#main_div {
+	width: 500px;
+	height: 400px;
+}
+#view_date {
+	width: 200px;
+}
+table {
+	width: 300px;
+}
+</style>
+<script>
+$(document).ready(function() {
+	$("#view_date").change(function() {
+		var url = "{{ schedule_url }}?view_date=" + $(this).val();
+		window.location.replace(url);
+	});
+});
+</script>
+{% endblock %}
+
+{% block body %}
+<center>
+	<div id="main_div">
+		<h3>{{ title }}</h3>
+
+		<form role="form" method="get" action="">
+			<div class="form-group">
+				<select class="form-control" name="view_date" id="view_date">
+					{% for date in other_dates %}
+						<option>{{ date }}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</form>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Start</th>
+					<th>End</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for shift in shifts %}
+					<tr>
+						{% for col in shift %}
+							<td>{{ col }}</td>
+						{% endfor %}
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		{% if shifts|length < 1 %}
+			<div class="alert alert-warning">No employees scheduled.</div>
+		{% endif %}
+	</div>
+</center>
+{% endblock %}

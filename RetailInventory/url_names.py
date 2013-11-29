@@ -20,7 +20,7 @@ RECEIPT_SEARCH = 'receipt_overview'
 # Store module URLS.
 MANAGER_OVERVIEW = 'manager_overview'
 ADD_SHIFT = 'add_shift'
-
+VIEW_SCHEDULE = 'view_scheudle'
 
 # Shortcut URLS for resolving reverse matches.
 
@@ -65,3 +65,6 @@ def manager_overview_url():
 
 def add_shift_url():
   return reverse(ADD_SHIFT)
+
+def view_schedule_url():
+  return reverse(VIEW_SCHEDULE)
