@@ -106,6 +106,7 @@ class ScheduleView(View):
     helper = InventoryDBHelper()
     helper.execute('call get_schedule("%s")' % view_date)
     shifts = [shift for shift in helper]
+    helper.close()
 
     other_dates = []
     today = date.today()

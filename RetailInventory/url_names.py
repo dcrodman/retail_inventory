@@ -17,6 +17,7 @@ ADD_CONTACT = 'add_contact'
 TRANSACTION_OVERVIEW = 'transaction_overview'
 SALES_OVERVIEW = 'sales_overview'
 RECEIPT_SEARCH = 'receipt_overview'
+POS_VIEW = 'pos_view'
 # Store module URLS.
 MANAGER_OVERVIEW = 'manager_overview'
 ADD_SHIFT = 'add_shift'
@@ -59,6 +60,9 @@ def sales_overview_url():
 
 def receipt_search_url():
   return reverse(RECEIPT_SEARCH)
+
+def pos_view_url():
+  return reverse(POS_VIEW)
 
 def manager_overview_url():
   return reverse(MANAGER_OVERVIEW)

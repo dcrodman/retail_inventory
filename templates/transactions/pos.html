@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block extra_header %}
+<style>
+#main_div { width: 600px; }
+form {
+	margin-top: 30px;
+	width: 300px;
+	border-radius: 5px;
+	background-color: #e8e8e8;
+	padding: 20px;
+	position: inline-block;
+	clear: both;
+}
+
+.alert {
+	margin-top: 15px;
+	width: 60%;
+}
+
+button { width: 110px; }
+p { margin-right: 100px;}
+
+</style>
+{% endblock %}
+
+{% block body %}
+<center>
+	<div id="main_div">
+		<h3>{{ title }}</h3>
+		
+		<form role="form" method="post" action="">
+		 	{% csrf_token %}
+			<div class="form-group">
+				<select class="form-control" name="product">
+					{% for product in products %}
+						<option>{{ product }}</option>
+					{% endfor %}
+				</select>
+				<p class="help-block pull-left">Product</p>
+			</div>
+			<div class="form-group">
+				<select class="form-control" name="employee">
+					{% for employee in employees %}
+						<option>{{ employee }}</option>
+					{% endfor %}
+				</select>
+				<p class="help-block pull-left">Cashsier</p>
+			</div>
+
+			<div class="form-group">
+				<select class="form-control" name="customer">
+					{% for customer in customers %}
+						<option>{{ customer }}</option>
+					{% endfor %}
+				</select>
+				<p class="help-block pull-left">Customer</p>
+			</div>
+
+			<div class="form-group">
+				<input class="form-control" type="text" placeholder="Total $" name="total">
+			</div>
+
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+
+		{% if success %}
+			<div class="alert alert-success"><b>Success!</b> Product rung out successfully.</div>
+		{% elif error %}
+			<div class="alert alert-danger"><b>Error!</b> {{ error }}</div>
+		{% endif %}
+	</div>
+</center>
+{% endblock %}

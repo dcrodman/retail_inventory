@@ -20,6 +20,7 @@ class DashboardView(View):
         'transaction_overview' : transaction_overview_url(),
         'sales_overview' : sales_overview_url(),
         'receipt_search' : receipt_search_url(),
+        'pos_view' : pos_view_url(),
         'manager_overview' : manager_overview_url(),
         'add_shift' : add_shift_url(),
         'view_schedule' : view_schedule_url()

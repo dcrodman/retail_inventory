@@ -12,4 +12,5 @@ urlpatterns = patterns('',
       name=SALES_OVERVIEW),
   url(r'^receipt_search/$', views.ReceiptSearchView.as_view(),
       name=RECEIPT_SEARCH),
+  url(r'^pos/$', views.POSView.as_view(), name=POS_VIEW)
 )
